@@ -1,4 +1,5 @@
-import { orange } from '@material-ui/core/colors';
+import blue from '@material-ui/core/colors/blue';
+import pink from '@material-ui/core/colors/pink';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   createMuiTheme,
@@ -6,21 +7,13 @@ import {
 } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import Header from './Header';
-import SearchContainer from './SearchContainer';
-
-const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: 'https://source.unsplash.com/random',
-  imgText: 'main image description',
-  linkText: 'Continue reading…',
-};
+import Header from './components/Header';
+import SearchContainer from './components/SearchContainer';
 
 const theme = createMuiTheme({
-  status: {
-    danger: orange[500],
+  palette: {
+    primary: blue,
+    secondary: pink,
   },
 });
 
@@ -30,7 +23,7 @@ export default function Blog() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Header title="FlightScanner" />
-        <SearchContainer post={mainFeaturedPost}>
+        <SearchContainer>
           <Typography
             component="h1"
             variant="h3"
