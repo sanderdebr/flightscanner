@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useStyles from './styles';
 
-export default function Header({ title }) {
+const Header = ({ title }) => {
   const classes = useStyles();
 
   return (
@@ -20,8 +20,10 @@ export default function Header({ title }) {
       </Container>
     </AppBar>
   );
-}
+};
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
 };
+
+export default Header;
