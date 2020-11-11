@@ -1,8 +1,6 @@
-# webpack-react-setup
+# FlightScanner
 
-My custom setup for a webpack and react project.
-
-* Babel
-* React
-* ESLint
-* Prettier
+* Material UI
+* Custom react SSR setup
+* SkyScanner API 
+* State management trough Recoil
