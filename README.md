@@ -1,8 +1,8 @@
 # FlightScanner
 
-* Material UI
-* Custom react SSR setup
+* Custom React Webpack SSR setup
 * SkyScanner API 
+* Material UI components
 * State management trough Redux
 * Async calls with redux-thunk
 * Persisting with redux-persist
