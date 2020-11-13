@@ -1,3 +1,4 @@
+import { v4 as uuid } from 'uuid';
 import { Container } from '@material-ui/core';
 import React from 'react';
 
@@ -10,7 +11,10 @@ const SearchResults = () => {
 
   return (
     <Container maxWidth="lg">
-      {flights && flights.map((flight) => <Flight flight={flight} />)}
+      {flights &&
+        flights.map((flight) => (
+          <Flight key={uuid()} flight={flight} />
+        ))}
     </Container>
   );
 };

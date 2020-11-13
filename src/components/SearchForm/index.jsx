@@ -1,5 +1,12 @@
 import MomentUtils from '@date-io/moment';
-import { Button, Paper, TextField } from '@material-ui/core';
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+  TextField,
+} from '@material-ui/core';
 import {
   DatePicker,
   MuiPickersUtilsProvider,
@@ -8,6 +15,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import useGetPlaces from '../../hooks/useGetPlaces';
 import { getFlights } from '../../redux/flights/actions';
 import useStyles from './styles';
 
@@ -17,21 +25,30 @@ const SearchForm = ({ getFlights: getFlightsAction }) => {
   const [departDate, handleDepartChange] = useState(moment());
   const [returnDate, handleReturnChange] = useState(moment());
 
+  const [from, handleFrom] = useGetPlaces();
+
   return (
     <Paper className={classes.paper}>
       <form className={classes.form} noValidate autoComplete="off">
         <TextField
           id="standard-full-width"
           label="From"
-          placeholder="Amsterdam (AMS)"
+          placeholder="Amsterdam"
           InputLabelProps={{
             shrink: true,
           }}
+          value={from}
+          onChange={handleFrom}
         />
+        <List component="nav">
+          <ListItem button>
+            <ListItemText primary="Trash" />
+          </ListItem>
+        </List>
         <TextField
           id="standard-full-width"
           label="To"
-          placeholder="Everywhere"
+          placeholder="Stockholm"
           InputLabelProps={{
             shrink: true,
           }}
