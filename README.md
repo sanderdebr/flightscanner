@@ -3,6 +3,7 @@
 * Custom React Webpack SSR setup
 * SkyScanner API 
 * Material UI components
+* Custom Hooks
 * State management trough Redux
 * Async calls with redux-thunk
 * Persisting with redux-persist
