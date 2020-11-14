@@ -25,7 +25,9 @@ const SearchForm = ({ getFlights: getFlightsAction }) => {
   const [departDate, handleDepartChange] = useState(moment());
   const [returnDate, handleReturnChange] = useState(moment());
 
-  const [from, handleFrom] = useGetPlaces();
+  const [from, setFrom] = useState('');
+
+  const fromPlaces = useGetPlaces(from);
 
   return (
     <Paper className={classes.paper}>
@@ -38,12 +40,14 @@ const SearchForm = ({ getFlights: getFlightsAction }) => {
             shrink: true,
           }}
           value={from}
-          onChange={handleFrom}
+          onChange={(e) => setFrom(e.target.value)}
         />
         <List component="nav">
-          <ListItem button>
-            <ListItemText primary="Trash" />
-          </ListItem>
+          {fromPlaces?.map(({ PlaceName, PlaceId }) => (
+            <ListItem button>
+              <ListItemText primary={`${PlaceName} (${PlaceId})`} />
+            </ListItem>
+          ))}
         </List>
         <TextField
           id="standard-full-width"

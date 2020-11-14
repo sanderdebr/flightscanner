@@ -14,7 +14,11 @@ const Alert = ({ alerts }) => {
         variant="filled"
         severity={type}
       >
-        <AlertTitle>Oops, something went wrong</AlertTitle>
+        <AlertTitle>
+          {type !== 'success'
+            ? 'Oops, something went wrong'
+            : 'Success!'}
+        </AlertTitle>
         {message}
       </AlertMUI>
     );
