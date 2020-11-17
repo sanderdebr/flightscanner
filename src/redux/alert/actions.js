@@ -3,7 +3,9 @@ import alertActionTypes from './types';
 
 const { SET_ALERT, REMOVE_ALERT } = alertActionTypes;
 
-const setAlert = (message, type, timeout = 2500) => (dispatch) => {
+export const setAlert = (message, type, timeout = 2500) => (
+  dispatch,
+) => {
   const id = uuid();
 
   dispatch({
