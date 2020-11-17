@@ -1,12 +1,5 @@
 import MomentUtils from '@date-io/moment';
-import {
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  TextField,
-} from '@material-ui/core';
+import { Button, Paper } from '@material-ui/core';
 import {
   DatePicker,
   MuiPickersUtilsProvider,
@@ -15,8 +8,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import useGetPlaces from '../../hooks/useGetPlaces';
 import { getFlights } from '../../redux/flights/actions';
+import PlaceAutoSuggest from '../PlaceAutoSuggest';
 import useStyles from './styles';
 
 const SearchForm = ({ getFlights: getFlightsAction }) => {
@@ -25,37 +18,21 @@ const SearchForm = ({ getFlights: getFlightsAction }) => {
   const [departDate, handleDepartChange] = useState(moment());
   const [returnDate, handleReturnChange] = useState(moment());
 
-  const [from, setFrom] = useState('');
-
-  const fromPlaces = useGetPlaces(from);
+  // After choosing fetched from and to address, store in state with new search reducer
+  // Use stored addresses for the flights reducer
 
   return (
     <Paper className={classes.paper}>
       <form className={classes.form} noValidate autoComplete="off">
-        <TextField
-          id="standard-full-width"
+        <PlaceAutoSuggest
           label="From"
           placeholder="Amsterdam"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={from}
-          onChange={(e) => setFrom(e.target.value)}
+          order={0}
         />
-        <List component="nav">
-          {fromPlaces?.map(({ PlaceName, PlaceId }) => (
-            <ListItem button>
-              <ListItemText primary={`${PlaceName} (${PlaceId})`} />
-            </ListItem>
-          ))}
-        </List>
-        <TextField
-          id="standard-full-width"
+        <PlaceAutoSuggest
           label="To"
           placeholder="Stockholm"
-          InputLabelProps={{
-            shrink: true,
-          }}
+          order={1}
         />
         <MuiPickersUtilsProvider utils={MomentUtils}>
           <DatePicker
