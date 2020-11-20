@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import * as Api from '../utils/SkyScannerApi';
 
-const useGetPlaces = (from, delay = 500) => {
+const useGetPlaces = (place, delay = 400) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [throttle, setThrottle] = useState(false);
@@ -10,12 +10,12 @@ const useGetPlaces = (from, delay = 500) => {
   const [places, setPlaces] = useState([]);
 
   useEffect(async () => {
-    if (from.length > 3 && from.length < 100 && !throttle) {
+    if (place.length > 3 && place.length < 100 && !throttle) {
       setLoading(true);
       setThrottle(true);
       setTimeout(() => setThrottle(false), delay);
 
-      const response = await Api.getPlaces(from);
+      const response = await Api.getPlaces(place);
       setLoading(false);
 
       if (!response.message && response.Places) {
@@ -26,7 +26,7 @@ const useGetPlaces = (from, delay = 500) => {
     } else {
       setPlaces([]);
     }
-  }, [from]);
+  }, [place]);
 
   if (error) return error;
 

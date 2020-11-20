@@ -1,3 +1,4 @@
+import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import SearchContainer from '../components/SearchContainer';
@@ -18,7 +19,9 @@ const Home = () => {
         </Typography>
         <SearchForm />
       </SearchContainer>
-      <SearchResults />
+      <Container maxWidth="lg">
+        <SearchResults />
+      </Container>
     </>
   );
 };

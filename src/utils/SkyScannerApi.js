@@ -45,13 +45,23 @@ export const getFlights = async (query) => {
         headers: API_HEADERS,
       },
     );
-    const flights = await response.json();
+    const data = await response.json();
 
-    if (flights.Places) {
+    if (data.Quotes) {
+      const flights = [];
+
+      for (let i = 0; i < data.Quotes.length; i += 1) {
+        flights.push({
+          places: data.Places[i],
+          quotes: data.Quotes[i],
+          carriers: data.Carriers[i],
+        });
+      }
+
       return flights;
     }
 
-    throw flights;
+    throw data;
   } catch (errors) {
     return errors;
   }
