@@ -25,11 +25,18 @@ const SearchForm = ({
   const [fromPlace, setFromPlace] = useState(null);
   const [toPlace, setToPlace] = useState(null);
 
-  const query = { departDate, returnDate, fromPlace, toPlace };
+  const queries = {
+    departQuery: { departDate, fromPlace, toPlace },
+    returnQuery: {
+      returnDate,
+      fromPlace: toPlace,
+      toPlace: fromPlace,
+    },
+  };
 
   const handleSearch = () => {
     if (fromPlace && toPlace) {
-      getFlightsAction(query);
+      getFlightsAction(queries);
     } else {
       dispatchAlert('Please select a from and to place', 'warning');
     }

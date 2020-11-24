@@ -16,11 +16,13 @@ const SearchResults = ({ search, flights, loading }) => {
   let toPlace;
   let showResults;
 
-  if (search.length > 0) {
-    showResults = true;
-    fromPlace = search[search.length - 1].fromPlace.name;
-    toPlace = search[search.length - 1].toPlace.name;
-  }
+  // if (search.length > 0) {
+  //   showResults = true;
+  //   fromPlace = search[search.length - 1].fromPlace.name;
+  //   toPlace = search[search.length - 1].toPlace.name;
+  // }
+
+  showResults = false;
 
   return showResults ? (
     <Grid container spacing={3}>
@@ -71,9 +73,10 @@ const SearchResults = ({ search, flights, loading }) => {
         </Grid>
       ) : (
         flights &&
+        null /* 
         flights.map((flight) => (
           <SearchResult key={uuid()} flight={flight} />
-        ))
+        )) */
       )}
     </Grid>
   ) : (

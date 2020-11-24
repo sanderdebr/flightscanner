@@ -14,25 +14,39 @@ export const getFlights = (query) => async (dispatch) => {
   dispatch({ type: GET_FLIGHTS });
 
   try {
-    const response = await Api.getFlights(query);
+    const [departFlights, returnFlights] = await Promise.all([
+      Api.getFlights(query.departQuery),
+      Api.getFlights(query.returnQuery),
+    ]);
 
-    if (response.errors) {
-      throw response.errors[0];
+    if (departFlights.message) {
+      throw new Error(departFlights.message);
     }
+
+    if (returnFlights.message) {
+      throw new Error(returnFlights.message);
+    }
+
+    if (departFlights.length === 0 && returnFlights.length === 0) {
+      throw new Error('No flights found');
+    }
+
+    const flights = { departFlights, returnFlights };
 
     dispatch({
       type: GET_FLIGHTS_SUCCESS,
-      payload: response,
+      payload: flights,
     });
 
     dispatch(saveSearch(query));
   } catch (err) {
+    console.log(err);
     dispatch({
       type: GET_FLIGHTS_FAIL,
       payload: { msg: err, status: 'error' },
     });
 
-    dispatch(setAlert(err, 'error'));
+    dispatch(setAlert(err.message, 'error'));
   }
 };
 

@@ -1,3 +1,4 @@
+import { Box, Button } from '@material-ui/core';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -9,12 +10,19 @@ import useStyles from './styles';
 const SearchResult = ({ flight }) => {
   const classes = useStyles();
 
+  console.log(flight);
+
+  const carrier = flight.carriers.Name;
+  const quote = `$ ${flight.quotes.MinPrice}`;
+
   return (
-    <Grid item xs={6}>
+    <Grid item md={6}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>
-            <ButtonBase className={classes.image}>KLM</ButtonBase>
+            <ButtonBase className={classes.image}>
+              {carrier}
+            </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
@@ -30,16 +38,28 @@ const SearchResult = ({ flight }) => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Typography
-                  variant="body2"
-                  style={{ cursor: 'pointer' }}
-                >
-                  Remove
-                </Typography>
+                <Typography variant="body2">Remove</Typography>
               </Grid>
             </Grid>
             <Grid item>
-              <Typography variant="subtitle1">$19.00</Typography>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
+                style={{ height: '100%' }}
+              >
+                <Typography variant="h5" gutterBottom>
+                  {quote}
+                </Typography>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                >
+                  Select
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </Grid>

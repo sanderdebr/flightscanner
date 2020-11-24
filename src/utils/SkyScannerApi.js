@@ -35,11 +35,10 @@ export const getFlights = async (query) => {
   try {
     const from = query.fromPlace.id;
     const to = query.toPlace.id;
-    const fromDate = moment(query.departDate).format('YYYY-MM-DD');
-    const toDate = moment(query.toDate).format('YYYY-MM-DD');
+    const date = moment(query.date).format('YYYY-MM-DD');
 
     const response = await fetch(
-      `${API_BASE_URL}browsedates/v1.0/US/USD/en-US/${from}/${to}/${fromDate}?inboundpartialdate=${toDate}`,
+      `${API_BASE_URL}browsedates/v1.0/US/USD/en-US/${from}/${to}/${date}`,
       {
         method: 'GET',
         headers: API_HEADERS,
