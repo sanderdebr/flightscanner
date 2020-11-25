@@ -40,6 +40,7 @@ const PlacesList = ({
 }) => {
   const classes = useStyles();
 
+  // Set place as selected when user clicks on a place in the list
   const handleClick = (name, id) => {
     setPlace({ name, id });
     setPlaces([]);

@@ -4,6 +4,7 @@ import { persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import rootReducer from './root-reducer';
 
+// Adding thunk middleware for API calls
 const middlewares = [thunk];
 
 if (process.env.NODE_ENV === 'development') {

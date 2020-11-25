@@ -25,8 +25,10 @@ const SearchForm = ({
   const [fromPlace, setFromPlace] = useState(null);
   const [toPlace, setToPlace] = useState(null);
 
+  // Save all states in a query
   const query = { departDate, returnDate, fromPlace, toPlace };
 
+  // When user clicks on Search Flights button, check if both fields are filled in before acting.
   const handleSearch = () => {
     if (fromPlace && toPlace) {
       getFlightsAction(query);

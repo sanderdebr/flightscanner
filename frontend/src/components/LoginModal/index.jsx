@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import GoogleButton from 'react-google-button';
 import { connect } from 'react-redux';
-import { API_PATH } from '../../config';
+import { API_PATH } from '../../config/index';
 import { toggleModal } from '../../redux/modal/actions';
 import useStyles from '../Header/styles';
 
@@ -27,7 +27,10 @@ const LoginModal = ({
     >
       <DialogTitle id="form-dialog-title">Login</DialogTitle>
       <DialogContent>
-        <a className={classes.link} href={`${API_PATH}/auth/google`}>
+        <a
+          className={classes.link}
+          href={`${API_PATH}api/auth/google`}
+        >
           <GoogleButton />
         </a>
       </DialogContent>

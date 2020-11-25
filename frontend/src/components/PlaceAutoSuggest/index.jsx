@@ -13,17 +13,20 @@ const PlaceAutoSuggest = ({
 }) => {
   const [value, setValue] = useState('');
 
+  // Get list of places from custom hook that fetches API data
   const [fetchedPlaces, setFetchedPlaces, loading] = useGetPlaces(
     value,
   );
 
-  const handleFrom = (e) => {
+  // When user types in field, remove any selected place
+  const handleChange = (e) => {
     setSelectedPlace(null);
     setValue(e.target.value);
   };
 
   let selectedPlaceFull = selectedPlace || null;
 
+  // If user has selected a place, destructure its data
   if (selectedPlaceFull) {
     const { name, id } = selectedPlaceFull;
     selectedPlaceFull = `${name} (${id})`;
@@ -39,7 +42,7 @@ const PlaceAutoSuggest = ({
           shrink: true,
         }}
         value={selectedPlaceFull || value}
-        onChange={handleFrom}
+        onChange={handleChange}
       />
       <PlacesList
         order={order}

@@ -1,5 +1,7 @@
 import moment from 'moment';
 
+// API config
+
 const API_BASE_URL =
   'https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/';
 const API_HOST =
@@ -9,6 +11,8 @@ const API_HEADERS = {
   'x-rapidapi-key': process.env.API_KEY,
   'x-rapidapi-host': API_HOST,
 };
+
+// Returns list of places based on input query
 
 export const getPlaces = async (query) => {
   try {
@@ -30,6 +34,8 @@ export const getPlaces = async (query) => {
     return errors;
   }
 };
+
+// Returns list of flights based on search query
 
 export const getFlights = async (query) => {
   try {

@@ -16,6 +16,7 @@ const SearchResults = ({ search, flights, loading }) => {
   let toPlace;
   let showResults = false;
 
+  // If the user has a search result AND flight results in their persisted state, show most recent search data
   if (search.length > 0 && flights) {
     showResults = true;
     fromPlace = search[search.length - 1].fromPlace.name;
