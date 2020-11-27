@@ -17,7 +17,7 @@ const flightsReducer = (state = INITIAL_STATE, action) => {
 
   switch (type) {
     case GET_FLIGHTS:
-      return { ...state, loading: true };
+      return { ...state, loading: true, error: null };
     case GET_FLIGHTS_SUCCESS:
       return {
         ...state,

@@ -43,14 +43,12 @@ const SearchForm = ({
         <PlaceAutoSuggest
           label="From"
           placeholder="Amsterdam"
-          order={0}
           selectedPlace={fromPlace}
           setSelectedPlace={setFromPlace}
         />
         <PlaceAutoSuggest
           label="To"
           placeholder="Stockholm"
-          order={1}
           selectedPlace={toPlace}
           setSelectedPlace={setToPlace}
         />

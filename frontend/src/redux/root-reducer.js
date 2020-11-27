@@ -5,6 +5,7 @@ import alertReducer from './alert/reducer';
 import flightsReducer from './flights/reducer';
 import modalReducer from './modal/reducer';
 import searchReducer from './search/reducer';
+import userReducer from './user/reducer';
 
 const persistConfig = {
   key: 'root',
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   search: searchReducer,
   flights: flightsReducer,
+  user: userReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

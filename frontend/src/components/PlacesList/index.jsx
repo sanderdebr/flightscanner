@@ -1,4 +1,9 @@
-import { Box, List, ListItem, ListItemText } from '@material-ui/core';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Paper,
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import useStyles from './styles';
@@ -31,12 +36,12 @@ const PlacesListContent = ({
 };
 
 const PlacesList = ({
-  order,
   places,
   setPlace,
   setPlaces,
   show,
   loading,
+  position,
 }) => {
   const classes = useStyles();
 
@@ -47,7 +52,10 @@ const PlacesList = ({
   };
 
   return (
-    <Box className={classes.box} style={{ left: `${order * 250}px` }}>
+    <Paper
+      className={classes.box}
+      style={{ top: position.top, left: position.left }}
+    >
       <List component="nav">
         <PlacesListContent
           places={places}
@@ -56,12 +64,13 @@ const PlacesList = ({
           handleClick={handleClick}
         />
       </List>
-    </Box>
+    </Paper>
   );
 };
 
 PlacesList.defaultProps = {
   setPlace: null,
+  position: { top: 0, left: 0 },
 };
 
 PlacesListContent.propTypes = {
@@ -73,11 +82,11 @@ PlacesListContent.propTypes = {
 
 PlacesList.propTypes = {
   places: PropTypes.instanceOf(Array).isRequired,
-  order: PropTypes.number.isRequired,
   setPlace: PropTypes.func,
   setPlaces: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
+  position: PropTypes.instanceOf(Object),
 };
 
 export default PlacesList;

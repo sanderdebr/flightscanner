@@ -25,7 +25,7 @@ const SearchResults = ({ search, flights, loading }) => {
 
   return showResults ? (
     <Grid container spacing={3}>
-      <Grid item container>
+      <Grid item container spacing={3}>
         <Grid item xs={12} sm={10}>
           <Box display="flex" alignItems="center">
             <Typography

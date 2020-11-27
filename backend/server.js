@@ -22,25 +22,6 @@ app.use(passport.session());
 // Init middleware
 app.use(express.json());
 
-//Unprotected Routes
-app.get('/', (req, res) => {
-  res.send('<h1>Home</h1>');
-});
-
-app.get('/failed', (req, res) => {
-  res.send('<h1>Log in Failed :(</h1>');
-});
-
-// Middleware - Check user is Logged in
-const checkUserLoggedIn = (req, res, next) => {
-  req.user ? next() : res.sendStatus(401);
-};
-
-//Protected Route.
-app.get('/profile', checkUserLoggedIn, (req, res) => {
-  res.send(`<h1>${req.user.displayName}'s Profile Page</h1>`);
-});
-
 // Declare routes
 app.use('/api/auth', require('./routes/api/auth'));
 

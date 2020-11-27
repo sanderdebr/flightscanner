@@ -4,13 +4,19 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     zIndex: 1,
     position: 'relative',
-    height: '65vh',
+    height: 'auto',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
+    paddingTop: theme.spacing(4),
+
+    [theme.breakpoints.up('md')]: {
+      paddingTop: 0,
+      height: '65vh',
+    },
 
     '&:before': {
       zIndex: -1,

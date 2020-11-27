@@ -5,11 +5,18 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   form: {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    position: 'inherit',
+    display: 'grid',
+    gridGap: theme.spacing(3),
+    gridTemplateRows: 'repeat(5, 1fr)',
     padding: theme.spacing(4),
+
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+
     '& > *': {
       flex: 1,
       marginRight: theme.spacing(1),

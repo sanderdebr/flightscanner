@@ -1,13 +1,12 @@
 import { TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useGetPlaces from '../../hooks/useGetPlaces';
 import PlacesList from '../PlacesList';
 
 const PlaceAutoSuggest = ({
   label,
   placeholder,
-  order,
   selectedPlace,
   setSelectedPlace,
 }) => {
@@ -32,10 +31,26 @@ const PlaceAutoSuggest = ({
     selectedPlaceFull = `${name} (${id})`;
   }
 
+  // Get absolute position of element, for position results list on correct place
+  const textfield = useRef(null);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+
+  const updatePosition = () => {
+    const { top, left } = textfield.current.getBoundingClientRect();
+    setPosition({ top, left });
+  };
+
+  useEffect(() => {
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+
+    return () => window.removeEventListener('resize', updatePosition);
+  }, []);
+
   return (
     <>
       <TextField
-        id="standard-full-width"
+        ref={textfield}
         label={label}
         placeholder={placeholder}
         InputLabelProps={{
@@ -45,12 +60,12 @@ const PlaceAutoSuggest = ({
         onChange={handleChange}
       />
       <PlacesList
-        order={order}
         places={fetchedPlaces}
         setPlace={setSelectedPlace}
         setPlaces={setFetchedPlaces}
         show={value.length > 3 && !selectedPlace}
         loading={loading}
+        position={position}
       />
     </>
   );
@@ -64,7 +79,6 @@ PlaceAutoSuggest.defaultProps = {
 PlaceAutoSuggest.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  order: PropTypes.number.isRequired,
   selectedPlace: PropTypes.instanceOf(Object),
   setSelectedPlace: PropTypes.func,
 };

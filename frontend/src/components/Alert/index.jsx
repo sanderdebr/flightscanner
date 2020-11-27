@@ -7,12 +7,13 @@ import useStyles from './styles';
 const Alert = ({ alerts }) => {
   const classes = useStyles();
 
-  return alerts.map(({ message, type }) => {
+  return alerts.map(({ message, type, id }) => {
     return (
       <AlertMUI
         className={classes.alert}
         variant="filled"
         severity={type}
+        key={id}
       >
         {message}
       </AlertMUI>
