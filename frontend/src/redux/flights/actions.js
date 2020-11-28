@@ -1,20 +1,14 @@
-import * as Api from '../../utils/SkyScannerApi';
+import SkyScannerApi from '../../utils/SkyScannerApi';
 import { setAlert } from '../alert/actions';
 import saveSearch from '../search/actions';
 import flightActionTypes from './types';
 
-const {
-  GET_FLIGHTS,
-  GET_FLIGHTS_SUCCESS,
-  GET_FLIGHTS_FAIL,
-} = flightActionTypes;
+const { GET_FLIGHTS_SUCCESS, GET_FLIGHTS_FAIL } = flightActionTypes;
 
 // Get flights based on search query
 export const getFlights = (query) => async (dispatch) => {
-  dispatch({ type: GET_FLIGHTS });
-
   try {
-    const response = await Api.getFlights(query);
+    const response = await SkyScannerApi.getFlights(query);
 
     if (response.message) {
       throw new Error(response.message);

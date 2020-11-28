@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import GoogleButton from 'react-google-button';
 import { connect } from 'react-redux';
-import { API_PATH } from '../../config/index';
+import { API_PATH } from '../../config/api';
 import { toggleModal } from '../../redux/modal/actions';
 import useStyles from '../Header/styles';
 

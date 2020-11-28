@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import * as Api from '../utils/SkyScannerApi';
+import SkyScannerApi from '../utils/SkyScannerApi';
 
 // Custom hook that returns a list of places based on search input
 // Calls API on each throttled request
@@ -23,7 +23,7 @@ const useGetPlaces = (place, delay = 400) => {
       setTimeout(() => setThrottle(false), delay);
 
       // Wait for API places response
-      const response = await Api.getPlaces(place);
+      const response = await SkyScannerApi.getPlaces(place);
       setLoading(false);
 
       // Check if response contains places array

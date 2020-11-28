@@ -5,7 +5,17 @@ const cookieSession = require('cookie-session');
 // Allows to read dotenv
 require('dotenv').config();
 
+// Declare server
 const app = express();
+
+// Server options
+app.use((request, response, next) => {
+  response.header(
+    'Access-Control-Allow-Origin',
+    request.headers.origin,
+  );
+  next();
+});
 
 // Configure session storahe
 app.use(
