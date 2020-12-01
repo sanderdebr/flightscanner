@@ -1,39 +1,54 @@
 const express = require('express');
 const passport = require('passport');
-const cookieSession = require('cookie-session');
+const session = require('cookie-session');
+const bodyParser = require('body-parser'); //Required to pass responses through auth middleware
 
 // Allows to read dotenv
 require('dotenv').config();
+
+// Page routing
+const authRouter = require('./routes/api/auth');
 
 // Declare server
 const app = express();
 
 // Server options
-app.use((request, response, next) => {
+app.use(function (request, response, next) {
+  response.header('Access-Control-Allow-Credentials', true);
   response.header(
     'Access-Control-Allow-Origin',
     request.headers.origin,
   );
-  next();
+  response.header(
+    'Access-Control-Allow-Methods',
+    'GET,PUT,POST,DELETE',
+  );
+  response.header(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept',
+  );
+  if ('OPTIONS' == request.method) {
+    response.send(200);
+  } else {
+    next();
+  }
 });
 
-// Configure session storahe
+app.use(bodyParser.json());
+
+// Server options
+app.use(express.json());
 app.use(
-  cookieSession({
-    name: 'session-name',
-    keys: ['key1', 'key2'],
+  session({
+    secret: process.env.COOKIE_SECRET,
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   }),
 );
-
-// Configure passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Init middleware
-app.use(express.json());
-
 // Declare routes
-app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/auth', authRouter);
 
 // Require passport config
 require('./services/passport');

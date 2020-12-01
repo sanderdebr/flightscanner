@@ -8,10 +8,18 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     display: 'flex',
+    alignItems: 'center',
   },
   title: {
     flexGrow: 1,
-    marginLeft: '1rem',
+    marginLeft: theme.spacing(2),
+  },
+  loading: {
+    padding: theme.spacing(1),
+    marginRight: theme.spacing(2),
+  },
+  displayName: {
+    marginRight: theme.spacing(2),
   },
 }));
 
