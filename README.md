@@ -1,5 +1,7 @@
 # FlightScanner
 
+A simple SkyScanner clone built with React and Redux.
+
 ### Front-end
 * Custom React Webpack setup
 * Material UI components
