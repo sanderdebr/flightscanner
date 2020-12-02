@@ -1,5 +1,6 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -7,6 +8,7 @@ module.exports = {
     new Dotenv({
       path: path.resolve(__dirname, '..', './.env.production'),
     }),
+    new CompressionPlugin()
   ],
-  devtool: 'eval-source-map',
 };
+ 

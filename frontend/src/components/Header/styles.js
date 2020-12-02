@@ -8,7 +8,14 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
   },
   title: {
     flexGrow: 1,

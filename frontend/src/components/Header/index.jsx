@@ -1,4 +1,4 @@
-import { Container, Typography } from '@material-ui/core';
+import { Box, Container, Typography } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -17,47 +17,51 @@ const Header = ({
   logoutUser: logout,
 }) => {
   const classes = useStyles();
-  const { isAuthenticated, loading } = user;
+  const { isAuthenticated, loading, displayName } = user;
 
   return (
     <AppBar position="static" className={classes.header}>
       <Container maxWidth="lg" className={classes.container}>
-        <FlightTakeoffIcon />
-        <Typography variant="h6" className={classes.title}>
-          {title}
-        </Typography>
-        {loading && (
-          <CircularProgress
-            color="secondary"
-            className={classes.loading}
-          />
-        )}
-        {isAuthenticated && (
-          <>
-            <Typography
-              variant="subtitle1"
-              className={classes.displayName}
-            >
-              {user.user.displayName}
-            </Typography>
+        <Box display="flex" alignItems="center">
+          <FlightTakeoffIcon />
+          <Typography variant="h6" className={classes.title}>
+            {title}
+          </Typography>
+        </Box>
+        <Box display="flex" alignItems="center">
+          {loading && (
+            <CircularProgress
+              color="secondary"
+              className={classes.loading}
+            />
+          )}
+          {isAuthenticated && (
+            <>
+              <Typography
+                variant="subtitle1"
+                className={classes.displayName}
+              >
+                {displayName}
+              </Typography>
+              <Button
+                color="inherit"
+                variant="outlined"
+                onClick={logout}
+              >
+                Logout
+              </Button>
+            </>
+          )}
+          {!loading && !isAuthenticated && (
             <Button
               color="inherit"
               variant="outlined"
-              onClick={logout}
+              onClick={toggleModalAction}
             >
-              Logout
+              Login
             </Button>
-          </>
-        )}
-        {!loading && !isAuthenticated && (
-          <Button
-            color="inherit"
-            variant="outlined"
-            onClick={toggleModalAction}
-          >
-            Login
-          </Button>
-        )}
+          )}
+        </Box>
       </Container>
     </AppBar>
   );

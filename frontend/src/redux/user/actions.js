@@ -16,10 +16,10 @@ const loadUser = () => async (dispatch) => {
   try {
     const response = await Api.loadUser();
 
-    if (!response.errors) {
+    if (!response.errors && response.displayName) {
       dispatch({
         type: LOAD_USER_SUCCESS,
-        payload: response,
+        payload: response.displayName,
       });
     } else {
       throw response.errors;

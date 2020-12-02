@@ -12,7 +12,7 @@ const {
 const INITIAL_STATE = {
   isAuthenticated: null,
   loading: false,
-  user: null,
+  displayName: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -30,7 +30,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isAuthenticated: true,
         loading: false,
-        user: payload,
+        displayName: payload,
       };
     case LOAD_USER_FAIL:
     case LOGOUT_USER_SUCCESS:
@@ -38,7 +38,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isAuthenticated: null,
         loading: false,
-        user: null,
+        displayName: null,
       };
     case LOGOUT_USER_FAIL:
       return {
