@@ -7,9 +7,9 @@ import rootReducer from './root-reducer';
 // Adding thunk middleware for API calls
 const middlewares = [thunk];
 
-if (process.env.NODE_ENV === 'development') {
-  middlewares.push(logger);
-}
+// TODO: if (process.env.NODE_ENV === 'development') {
+middlewares.push(logger);
+// }
 
 export const store = createStore(
   rootReducer,
