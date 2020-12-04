@@ -27,10 +27,7 @@ const LoginModal = ({
     >
       <DialogTitle id="form-dialog-title">Login</DialogTitle>
       <DialogContent>
-        <a
-          className={classes.link}
-          href={`${API_PATH}api/auth/google`}
-        >
+        <a className={classes.link} href={`${API_PATH}auth/google`}>
           <GoogleButton />
         </a>
       </DialogContent>

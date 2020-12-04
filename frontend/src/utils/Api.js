@@ -3,7 +3,7 @@ import { API_PATH } from '../config/api';
 export default class Api {
   static loadUser = async () => {
     try {
-      const response = await fetch(`${API_PATH}api/auth/user`, {
+      const response = await fetch(`${API_PATH}auth/user`, {
         method: 'GET',
         credentials: 'include',
       });
@@ -24,7 +24,7 @@ export default class Api {
 
   static logoutUser = async () => {
     try {
-      const response = await fetch(`${API_PATH}api/auth/logout`, {
+      const response = await fetch(`${API_PATH}auth/logout`, {
         method: 'GET',
         credentials: 'include',
       });
