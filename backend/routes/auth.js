@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const auth = require('../../middleware/auth');
+const auth = require('../middleware/auth');
 
 // @route
 // @desc    Redirect to Google, wait for callback, scope determines which Google info we'll get

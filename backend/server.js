@@ -7,7 +7,7 @@ const bodyParser = require('body-parser'); //Required to pass responses through 
 require('dotenv').config();
 
 // Page routing
-const authRouter = require('./routes/api/auth');
+const authRouter = require('./routes/auth');
 
 // Declare server
 const app = express();
@@ -48,7 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Declare routes
-app.use('/api/auth', authRouter);
+app.use('/auth', authRouter);
 
 // Require passport config
 require('./services/passport');
