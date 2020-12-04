@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config build-utils/webpack.config.js --env env=dev",
-    "build": "webpack --config build-utils/webpack.config.js --env env=prod",
+    "build": "webpack --config build-utils/webpack.config.js",
     "build:analyze": "npm run build -- --env addon=bundleanalyze"
   },
   "keywords": [],
