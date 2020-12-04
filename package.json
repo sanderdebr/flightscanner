@@ -7,7 +7,7 @@
     "dev-backend": "cd backend && npm run dev",
     "dev-frontend": "cd frontend && npm run dev",
     "build-frontend": "cd frontend && npm run build",
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\" "
+    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\" "
   },
   "repository": {
     "type": "git",
