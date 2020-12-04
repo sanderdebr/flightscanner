@@ -23,10 +23,10 @@ app.use(function (request, response, next) {
     'Access-Control-Allow-Methods',
     'GET,PUT,POST,DELETE',
   );
-  // TODO: response.header(
-  //   'Access-Control-Allow-Headers',
-  //   'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept',
-  // );
+  response.header(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept',
+  );
   if ('OPTIONS' == request.method) {
     response.send(200);
   } else {
