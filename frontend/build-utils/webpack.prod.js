@@ -5,9 +5,9 @@ const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = {
   mode: 'production',
   plugins: [
-    // new Dotenv({
-    //   path: path.resolve(__dirname, '..', './.env.production'),
-    // }),
+    new Dotenv({
+      path: path.resolve(__dirname, '..', './.env.production'),
+    }),
     new CompressionPlugin(),
   ],
 };
