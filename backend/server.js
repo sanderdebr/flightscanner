@@ -38,16 +38,10 @@ app.use(bodyParser.json());
 
 // Server options
 app.use(express.json());
-// app.use(
-//   session({
-//     secret: process.env.COOKIE_SECRET,
-//     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-//   }),
-// );
 app.use(
   session({
-    name: 'session',
-    keys: ['key1', 'key2'],
+    secret: process.env.COOKIE_SECRET,
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   }),
 );
 app.use(passport.initialize());
