@@ -2,6 +2,8 @@
 
 A simple SkyScanner clone built with React and Redux.
 
+<img src="https://i.ibb.co/1qN6nq0/flightscanner-ss.png" width="500" title="hover text">
+
 ### Front-end
 www.flightscanner.netlify.app
 * Custom React Webpack setup
