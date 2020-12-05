@@ -18,6 +18,7 @@ https://flightscanner-api.sanderdev.nl
 * Google login with OAuth2 Passport
 * SkyScanner API
 * Deployed on DigitalOcean Ubuntu server
+* Nginx reverse proxy for sub-domain
 
 After typing e.g. 'Amsterdam' the application will show a list with all airports in AMS to choose from.
 
