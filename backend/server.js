@@ -1,18 +1,23 @@
 const express = require('express');
+const cors = require('cors');
+var session = require('express-session');
 const passport = require('passport');
-const session = require('cookie-session');
-const bodyParser = require('body-parser'); //Required to pass responses through auth middleware
 
 // Allows to read dotenv
 require('dotenv').config();
 
 // Page routing
 const authRouter = require('./routes/auth');
+const { response } = require('express');
 
 // Declare server
 const app = express();
 
 // Server options
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.set('trust proxy', 1);
+// app.use(cors());
 app.use(function (request, response, next) {
   response.header('Access-Control-Allow-Credentials', true);
   response.header(
@@ -34,24 +39,23 @@ app.use(function (request, response, next) {
   }
 });
 
-app.use(bodyParser.json());
-
-// Server options
-app.use(express.json());
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    resave: false,
+    saveUninitialized: true,
   }),
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Declare routes
-app.use('/auth', authRouter);
-
 // Require passport config
 require('./services/passport');
+
+// Declare routes
+
+app.use('/auth', authRouter);
 
 const PORT = process.env.PORT || 5000;
 

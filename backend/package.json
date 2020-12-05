@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "SET NODE_ENV=dev & nodemon server.js"
   },
   "keywords": [],
   "author": "Sander de Bruijn",
@@ -19,6 +19,7 @@
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0"
   }

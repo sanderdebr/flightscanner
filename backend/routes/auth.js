@@ -18,6 +18,7 @@ router.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/failed' }),
   function (request, response) {
+    // response.redirect('http://localhost:8080');
     response.redirect(process.env.ALLOWED_ORIGIN);
   },
 );
