@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 var session = require('express-session');
 const passport = require('passport');
 
@@ -8,7 +7,6 @@ require('dotenv').config();
 
 // Page routing
 const authRouter = require('./routes/auth');
-const { response } = require('express');
 
 // Declare server
 const app = express();
@@ -17,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.set('trust proxy', 1);
-// app.use(cors());
+
 app.use(function (request, response, next) {
   response.header('Access-Control-Allow-Credentials', true);
   response.header(
@@ -33,7 +31,7 @@ app.use(function (request, response, next) {
     'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept',
   );
   if ('OPTIONS' == request.method) {
-    response.send(200);
+    response.sendStatus(204);
   } else {
     next();
   }
@@ -41,9 +39,11 @@ app.use(function (request, response, next) {
 
 app.use(
   session({
-    secret: process.env.COOKIE_SECRET,
+    name: process.env.SESSION_NAME,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: { secure: true, sameSite: 'none' },
   }),
 );
 
