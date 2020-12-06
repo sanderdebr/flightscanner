@@ -26,7 +26,7 @@ router.get(
 // @route
 // @desc    Returns current user information
 // @access  Protected
-router.get('/user', (request, response) => {
+router.get('/user', auth, (request, response) => {
   response.send(request.user);
 });
 
