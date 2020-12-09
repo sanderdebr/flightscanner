@@ -1,5 +1,6 @@
 import MomentUtils from '@date-io/moment';
-import { Button, Paper } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import {
   DatePicker,
   MuiPickersUtilsProvider,
@@ -12,6 +13,8 @@ import { setAlert } from '../../redux/alert/actions';
 import { getFlights } from '../../redux/flights/actions';
 import PlaceAutoSuggest from '../PlaceAutoSuggest';
 import useStyles from './styles';
+
+moment.locale('en-gb');
 
 const SearchForm = ({
   getFlights: getFlightsAction,

@@ -1,4 +1,5 @@
-import { Box, Button } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -8,6 +9,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useStyles from './styles';
 
+moment.locale('en-gb');
+
 const SearchResult = ({ flight }) => {
   const classes = useStyles();
 
@@ -16,8 +19,6 @@ const SearchResult = ({ flight }) => {
   const dateTime = moment(
     flight.quotes.OutboundLeg.DepartureDate,
   ).format('MMMM Do YYYY, h:mm:ss a');
-
-  console.log(flight);
 
   return (
     <Grid item md={6}>

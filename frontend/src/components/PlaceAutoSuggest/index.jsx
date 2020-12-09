@@ -1,4 +1,4 @@
-import { TextField } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 import PropTypes from 'prop-types';
 import React, { useRef, useState, useEffect } from 'react';
 import useGetPlaces from '../../hooks/useGetPlaces';

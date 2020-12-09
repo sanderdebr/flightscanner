@@ -1,4 +1,7 @@
-import { Box, Button, Grid, Typography } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { Skeleton } from '@material-ui/lab';

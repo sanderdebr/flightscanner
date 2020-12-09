@@ -1,13 +1,15 @@
-import { Box, Container, Typography } from '@material-ui/core';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import AppBar from '@material-ui/core/AppBar';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Typography from '@material-ui/core/Typography';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../redux/modal/actions';
 import { logoutUser } from '../../redux/user/actions';
+import Spinner from '../Spinner';
 import useStyles from './styles';
 
 const Header = ({
@@ -30,10 +32,7 @@ const Header = ({
         </Box>
         <Box display="flex" alignItems="center">
           {loading && (
-            <CircularProgress
-              color="secondary"
-              className={classes.loading}
-            />
+            <Spinner color="secondary" className={classes.loading} />
           )}
           {isAuthenticated && (
             <>

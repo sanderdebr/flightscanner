@@ -1,6 +1,8 @@
 import moment from 'moment';
 import * as ApiConfig from '../config/api';
 
+moment.locale('en-gb');
+
 export default class SkyScannerApi {
   // Returns list of places based on input query
   static getPlaces = async (query) => {

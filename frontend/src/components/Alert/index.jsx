@@ -1,4 +1,4 @@
-import { Alert as AlertMUI } from '@material-ui/lab';
+import AlertMUI from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
