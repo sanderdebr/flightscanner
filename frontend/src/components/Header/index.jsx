@@ -31,9 +31,7 @@ const Header = ({
           </Typography>
         </Box>
         <Box display="flex" alignItems="center">
-          {loading && (
-            <Spinner color="secondary" className={classes.loading} />
-          )}
+          {loading && <Spinner />}
           {isAuthenticated && (
             <>
               <Typography

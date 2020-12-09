@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
-import Alert from './components/Alert';
+import React, { lazy, Suspense, useEffect } from 'react';
 import Header from './components/Header';
-import LoginModal from './components/LoginModal';
 import Home from './pages/Home';
 import { store } from './redux/store';
 import loadUser from './redux/user/actions';
+
+const Alert = lazy(() => import('./components/Alert'));
+const LoginModal = lazy(() => import('./components/LoginModal'));
 
 const App = () => {
   useEffect(() => {
@@ -14,8 +15,10 @@ const App = () => {
   return (
     <>
       <Header title="FlightScanner" />
-      <Alert />
-      <LoginModal />
+      <Suspense fallback>
+        <Alert />
+        <LoginModal />
+      </Suspense>
       <Home />
     </>
   );

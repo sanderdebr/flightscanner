@@ -21,15 +21,15 @@ const Home = () => {
         >
           Let the journey begin
         </Typography>
-        <Suspense fallback={<Spinner />}>
+        <Suspense fallback={<Spinner color="primary" />}>
           <SearchForm />
         </Suspense>
       </SearchContainer>
-      <Suspense fallback={<Spinner />}>
-        <Container maxWidth="lg">
+      <Container maxWidth="lg">
+        <Suspense fallback={<Spinner />}>
           <SearchResults />
-        </Container>
-      </Suspense>
+        </Suspense>
+      </Container>
     </>
   );
 };
