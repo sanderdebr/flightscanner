@@ -6,12 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import useStyles from './styles';
 
-const PlacesListContent = ({
-  places,
-  show,
-  loading,
-  handleClick,
-}) => {
+const PlacesListContent = ({ places, show, loading, handleClick }) => {
   if (places.length > 0) {
     return places.map(({ PlaceName, PlaceId }) => (
       <ListItem
@@ -25,9 +20,7 @@ const PlacesListContent = ({
   }
 
   if (show) {
-    return (
-      <ListItem>{loading ? 'Searching...' : 'No results'}</ListItem>
-    );
+    return <ListItem>{loading ? 'Searching...' : 'No results'}</ListItem>;
   }
 
   return null;

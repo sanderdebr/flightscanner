@@ -34,17 +34,10 @@ const Header = ({
           {loading && <Spinner />}
           {isAuthenticated && (
             <>
-              <Typography
-                variant="subtitle1"
-                className={classes.displayName}
-              >
+              <Typography variant="subtitle1" className={classes.displayName}>
                 {displayName}
               </Typography>
-              <Button
-                color="inherit"
-                variant="outlined"
-                onClick={logout}
-              >
+              <Button color="inherit" variant="outlined" onClick={logout}>
                 Logout
               </Button>
             </>
@@ -75,6 +68,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { toggleModal, logoutUser })(
-  Header,
-);
+export default connect(mapStateToProps, { toggleModal, logoutUser })(Header);

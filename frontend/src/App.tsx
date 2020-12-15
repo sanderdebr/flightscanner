@@ -7,7 +7,7 @@ import loadUser from './redux/user/actions';
 const Alert = lazy(() => import('./components/Alert'));
 const LoginModal = lazy(() => import('./components/LoginModal'));
 
-const App = () => {
+const App: React.FC<any> = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);

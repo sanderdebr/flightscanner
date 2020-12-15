@@ -16,18 +16,16 @@ const SearchResult = ({ flight }) => {
 
   const carrier = flight.carriers.Name;
   const quote = `$ ${flight.quotes.MinPrice}`;
-  const dateTime = moment(
-    flight.quotes.OutboundLeg.DepartureDate,
-  ).format('MMMM Do YYYY, h:mm:ss a');
+  const dateTime = moment(flight.quotes.OutboundLeg.DepartureDate).format(
+    'MMMM Do YYYY, h:mm:ss a'
+  );
 
   return (
     <Grid item md={6}>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item xs>
-            <ButtonBase className={classes.image}>
-              {carrier}
-            </ButtonBase>
+            <ButtonBase className={classes.image}>{carrier}</ButtonBase>
           </Grid>
           <Grid item xs={6}>
             <Box className={classes.box}>
@@ -41,11 +39,7 @@ const SearchResult = ({ flight }) => {
               <Typography variant="h5" gutterBottom>
                 {quote}
               </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-              >
+              <Button variant="contained" color="primary" size="large">
                 Select
               </Button>
             </Box>

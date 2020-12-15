@@ -12,7 +12,7 @@ export default class SkyScannerApi {
         {
           method: 'GET',
           headers: ApiConfig.API_HEADERS,
-        },
+        }
       );
       const places = await response.json();
 
@@ -39,7 +39,7 @@ export default class SkyScannerApi {
         {
           method: 'GET',
           headers: ApiConfig.API_HEADERS,
-        },
+        }
       );
       const data = await response.json();
 

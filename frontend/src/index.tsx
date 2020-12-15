@@ -1,6 +1,6 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -17,7 +17,7 @@ ReactDOM.render(
       </ThemeProvider>
     </PersistGate>
   </Provider>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );
 
-module.hot.accept();
+// module.hot.accept();
