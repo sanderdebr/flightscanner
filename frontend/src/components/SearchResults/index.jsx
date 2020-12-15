@@ -51,11 +51,7 @@ const SearchResults = ({ search, flights, loading }) => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={2}>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="flex-end"
-          >
+          <Box display="flex" alignItems="center" justifyContent="flex-end">
             <Button variant="contained" color="primary" size="large">
               Save flights
             </Button>
@@ -64,20 +60,13 @@ const SearchResults = ({ search, flights, loading }) => {
       </Grid>
       {loading ? (
         <Grid item xs={12}>
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            p={2}
-          >
+          <Box display="flex" alignItems="center" justifyContent="center" p={2}>
             <CircularProgress color="primary" />
           </Box>
         </Grid>
       ) : (
         flights &&
-        flights.map((flight) => (
-          <SearchResult key={uuid()} flight={flight} />
-        ))
+        flights.map((flight) => <SearchResult key={uuid()} flight={flight} />)
       )}
     </Grid>
   ) : (

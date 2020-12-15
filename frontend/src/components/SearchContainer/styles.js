@@ -38,8 +38,7 @@ const useStyles = makeStyles((theme) => ({
       left: 0,
       width: '100%',
       height: '100%',
-      backgroundImage:
-        'url(https://source.unsplash.com/1600x900/?travel)',
+      backgroundImage: 'url(https://source.unsplash.com/1600x900/?travel)',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',

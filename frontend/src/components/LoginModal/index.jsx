@@ -11,10 +11,7 @@ import { API_PATH } from '../../config/api';
 import { toggleModal } from '../../redux/modal/actions';
 import useStyles from '../Header/styles';
 
-const LoginModal = ({
-  modalStatus,
-  toggleModal: toggleModalAction,
-}) => {
+const LoginModal = ({ modalStatus, toggleModal: toggleModalAction }) => {
   const classes = useStyles();
 
   return (

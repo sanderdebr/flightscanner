@@ -13,9 +13,7 @@ const PlaceAutoSuggest = ({
   const [value, setValue] = useState('');
 
   // Get list of places from custom hook that fetches API data
-  const [fetchedPlaces, setFetchedPlaces, loading] = useGetPlaces(
-    value,
-  );
+  const [fetchedPlaces, setFetchedPlaces, loading] = useGetPlaces(value);
 
   // When user types in field, remove any selected place
   const handleChange = (e) => {

@@ -1,10 +1,7 @@
 import MomentUtils from '@date-io/moment';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import {
-  DatePicker,
-  MuiPickersUtilsProvider,
-} from '@material-ui/pickers';
+import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
