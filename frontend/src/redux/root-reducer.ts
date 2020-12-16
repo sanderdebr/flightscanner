@@ -7,6 +7,8 @@ import modalReducer from './modal/reducer';
 import searchReducer from './search/reducer';
 import userReducer from './user/reducer';
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 const persistConfig = {
   key: 'root',
   storage,

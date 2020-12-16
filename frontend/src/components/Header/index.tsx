@@ -4,21 +4,29 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleModal } from '../../redux/modal/actions';
-import { logoutUser } from '../../redux/user/actions';
+import { RootState } from '../../redux/root-reducer';
+import { User, LogoutUser } from '../../redux/user/types';
 import Spinner from '../Spinner';
 import useStyles from './styles';
+import { Toggle } from '../../redux/modal/types';
+
+interface HeaderProps {
+  title: string;
+  user: User;
+  toggleModal: Toggle;
+  logoutUser: LogoutUser;
+}
 
 const Header = ({
   title,
   user,
   toggleModal: toggleModalAction,
   logoutUser: logout,
-}) => {
-  const classes = useStyles();
+}: HeaderProps) => {
+  const classes: PropsClasses = useStyles();
   const { isAuthenticated, loading, displayName } = user;
 
   return (
@@ -57,14 +65,7 @@ const Header = ({
   );
 };
 
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-  user: PropTypes.instanceOf(Object).isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  logoutUser: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   user: state.user,
 });
 

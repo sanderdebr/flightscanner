@@ -1,3 +1,4 @@
+/* eslint-disable */
 const Dotenv = require('dotenv-webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 
